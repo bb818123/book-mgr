@@ -1,0 +1,35 @@
+.bg {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2057541703,2411127054&fm=26&gp=0.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+.title{
+    position:relative;
+    margin-top: 80px;
+    text-align: center;
+}
+.auth {
+    .title-info {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .form {
+        width: 400px;
+        margin: 0 auto;
+
+        .item {
+            margin-bottom: 16px;
+
+            button {
+                width: 100%;
+            }
+        }
+    }
+}
