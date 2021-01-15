@@ -1,40 +1,22 @@
 ﻿//每一个文件都有自己的作用域
+
 const Koa = require('koa');
+const koaBody = require('koa-body');
+const { connect } = require('./db');
+const registerRoutes = require('./routers');
+const cors = require('@koa/cors');
+
 
 const app = new Koa();
 
-////通过app.use注册中间件
-////中间件本质上 他就是一个函数
-////context 上下文-当前请求的相关信息都在里面
-//app.use(async (context) => {
-//    //对象的解构
-//    const { request: req } = context;
-//    const { url } = req;
+connect().then(() => {
+    app.use(cors());
+    app.use(koaBody());
 
-//    if (url == '/') {
-//        context.response.body = '<h1>主页</h1>';
-
-//        return;
-//    }
-
-//    //路由
-//    if (url == '/user/list') {
-//        //访问数据库
-//        context.response.body = '<h1>用户列表</h1>';
-
-//        return;
-//    }
-
-//    context.body = '404';
-//    context.status = '404';
-//});
-
-//app.use((context) => {
-//    context.body = '找不到资源';
-//});
-
-app.listen(3000, () => {
-    console.log('启动成功');
+    registerRoutes(app);
+    //开启一个http服务
+    //接受http 请求 并作处理，处理完后相应
+    app.listen(3000, () => {
+        console.log('启动成功');
+    });
 });
-
-console.log('112233');
