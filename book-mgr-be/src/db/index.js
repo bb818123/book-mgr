@@ -1,4 +1,6 @@
 ﻿require('./Schemas/User');
+require('./Schemas/InviteCode');
+require('./Schemas/Book');
 
 const mongoose = require('mongoose');
 //const { use } = require('../routers/auth');
