@@ -35,3 +35,9 @@ export const update = (data = {}) => {
   );
 };
 
+export const detail = (id) => {
+  return axios.get(
+    `http://localhost:3000/book/detail/${id}`,
+  );
+};
+

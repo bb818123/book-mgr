@@ -88,9 +88,9 @@
 
           <div class="item">
             <a-button 
+            @click="register"
             size="large"
             type="primary"
-            @click="register"
             >
               注册
             </a-button>

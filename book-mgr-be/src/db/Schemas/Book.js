@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
-const { getMate }= require('../helpers');
+const { getMeta,preSave } = require('../helpers');
 
 const BookSchema = new mongoose.Schema({
     //书名
     name:String,
     //价格
-    price:String,
+    price:Number,
     //作者
     author:String,
     //出版日期
@@ -15,7 +15,10 @@ const BookSchema = new mongoose.Schema({
     //库存
     count:Number,
 
-    meta: getMate(),
+    meta: getMeta(),
 });
 
+BookSchema.pre('save',preSave);
+
 mongoose.model('Book',BookSchema);
+//季荣宝

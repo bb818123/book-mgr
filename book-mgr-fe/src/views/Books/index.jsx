@@ -6,6 +6,7 @@ import {
 import {
   book
 } from '@/service';
+import{useRouter} from 'vue-router';
 import {message,Modal,Input} from 'ant-design-vue';
 import {
   result,
@@ -20,6 +21,9 @@ export default defineComponent({
     Update,
   },
   setup() {
+    const router=useRouter();
+
+
     const columns = [{
         title: '书名',
         dataIndex: 'name',
@@ -122,9 +126,7 @@ export default defineComponent({
 
      result(res)
      .success(({msg}) =>{
-       message.success(msg);
-
-       getList();
+      
      });
     };
 
@@ -154,7 +156,7 @@ export default defineComponent({
 
           result(res)
           .success((data) => {
-            if (type === type) {
+            if (type === 'IN_COUNT') {
               //入库操作
               num = Math.abs(num);
           } else {
@@ -176,13 +178,20 @@ export default defineComponent({
       });
     };
 
+    //显示更新弹框
 const update = ({record}) =>{
   showUpdateModal.value =true;
   curEditBook.value =record;
 };
 
+//更新列表的某一行数据
 const updateCurBook = (newData) =>{
-Object.assign(curEditBook.value,newData);
+  Object.assign(curEditBook.value,newData);
+};
+
+//进入书籍详情页
+const toDetail = ({record}) =>{
+  router.push(`/books/${record._id}`);
 };
 
     return {
@@ -203,6 +212,7 @@ Object.assign(curEditBook.value,newData);
       update,
       curEditBook,
       updateCurBook,
+      toDetail,
     };
   },
 });

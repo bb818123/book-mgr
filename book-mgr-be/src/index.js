@@ -2,6 +2,7 @@
 
 const Koa = require('koa');
 const koaBody = require('koa-body');
+const Body = require('koa-body');
 const { connect } = require('./db');
 const registerRoutes = require('./routers');
 const cors = require('@koa/cors');
